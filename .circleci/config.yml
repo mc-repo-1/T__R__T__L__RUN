@@ -23,7 +23,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/test",
             "steps": [
                 {
@@ -40,7 +40,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/check",
             "steps": [
                 {
@@ -57,7 +57,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -74,7 +74,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -91,7 +91,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -108,7 +108,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -125,7 +125,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -142,7 +142,7 @@
                     "image": "circleci/node:14"
                 }
             ],
-            "resource_class": "medium",
+            "resource_class": "small",
             "working_directory": "~/deploy",
             "steps": [
                 {
@@ -183,7 +183,7 @@
             "triggers": [
                 {
                     "schedule": {
-                        "cron": "15 * * * *",
+                        "cron": "10 * * * *",
                         "filters": {
                             "branches": {
                                 "only": [
