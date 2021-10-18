@@ -1,7 +1,7 @@
 {
     "version": 2.1,
     "jobs": {
-        "build": {
+        "job_1": {
             "docker": [
                 {
                     "image": "circleci/node:16"
@@ -12,12 +12,12 @@
                 {
                     "run": {
                         "name": "Job_1",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_1.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_1.js"
                     }
                 }
             ]
         },
-        "test": {
+        "job_2": {
             "docker": [
                 {
                     "image": "circleci/node:14"
@@ -29,12 +29,12 @@
                 {
                     "run": {
                         "name": "Job_2",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_2.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_2.js"
                     }
                 }
             ]
         },
-        "check": {
+        "job_3": {
             "docker": [
                 {
                     "image": "circleci/node:14"
@@ -46,12 +46,12 @@
                 {
                     "run": {
                         "name": "Job_3",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_3.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_3.js"
                     }
                 }
             ]
         },
-        "deploy": {
+        "job_4": {
             "docker": [
                 {
                     "image": "circleci/node:14"
@@ -63,7 +63,7 @@
                 {
                     "run": {
                         "name": "Job_4",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_4.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_4.js"
                     }
                 }
             ]
@@ -80,7 +80,7 @@
                 {
                     "run": {
                         "name": "Job_5",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_5.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_5.js"
                     }
                 }
             ]
@@ -97,7 +97,7 @@
                 {
                     "run": {
                         "name": "Job_6",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_6.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_6.js"
                     }
                 }
             ]
@@ -114,7 +114,7 @@
                 {
                     "run": {
                         "name": "Job_7",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_7.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_7.js"
                     }
                 }
             ]
@@ -131,7 +131,7 @@
                 {
                     "run": {
                         "name": "Job_8",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_8.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_8.js"
                     }
                 }
             ]
@@ -148,7 +148,7 @@
                 {
                     "run": {
                         "name": "Job_9",
-                        "command": "git clone https://github.com/meocoder-test/mc-upg.git && cd mc-upg && npm i -s && node up_9.js"
+                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_9.js"
                     }
                 }
             ]
@@ -173,29 +173,10 @@
                 }
             ],
             "jobs": [
-                "build",
-                "test",
-                "check",
-                "deploy"
-            ]
-        },
-        "run_job_2": {
-            "triggers": [
-                {
-                    "schedule": {
-                        "cron": "10 * * * *",
-                        "filters": {
-                            "branches": {
-                                "only": [
-                                    "main",
-                                    "master"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ],
-            "jobs": [
+                "job_1",
+                "job_2",
+                "job_3",
+                "job_4",
                 "job_5",
                 "job_6",
                 "job_7",
