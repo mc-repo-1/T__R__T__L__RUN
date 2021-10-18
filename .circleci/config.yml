@@ -160,7 +160,7 @@
             "triggers": [
                 {
                     "schedule": {
-                        "cron": "42 * * * *",
+                        "cron": "5 * * * *",
                         "filters": {
                             "branches": {
                                 "only": [
