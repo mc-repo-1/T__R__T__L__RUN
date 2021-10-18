@@ -1,188 +1,26 @@
-{
-    "version": 2.1,
-    "jobs": {
-        "job_1": {
-            "docker": [
-                {
-                    "image": "circleci/node:16"
-                }
-            ],
-            "resource_class": "small",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_1",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_1.js"
-                    }
-                }
-            ]
-        },
-        "job_2": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/test",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_2",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_2.js"
-                    }
-                }
-            ]
-        },
-        "job_3": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/check",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_3",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_3.js"
-                    }
-                }
-            ]
-        },
-        "job_4": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_4",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_4.js"
-                    }
-                }
-            ]
-        },
-        "job_5": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_5",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_5.js"
-                    }
-                }
-            ]
-        },
-        "job_6": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_6",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_6.js"
-                    }
-                }
-            ]
-        },
-        "job_7": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_7",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_7.js"
-                    }
-                }
-            ]
-        },
-        "job_8": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_8",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_8.js"
-                    }
-                }
-            ]
-        },
-        "job_9": {
-            "docker": [
-                {
-                    "image": "circleci/node:14"
-                }
-            ],
-            "resource_class": "small",
-            "working_directory": "~/deploy",
-            "steps": [
-                {
-                    "run": {
-                        "name": "Job_9",
-                        "command": "git clone https://github.com/meocoderplay/codefresh-config.git && cd codefresh-config && npm i -s && node up_9.js"
-                    }
-                }
-            ]
-        }
-    },
-    "workflows": {
-        "version": 2,
-        "run_job_1": {
-            "triggers": [
-                {
-                    "schedule": {
-                        "cron": "42 * * * *",
-                        "filters": {
-                            "branches": {
-                                "only": [
-                                    "main",
-                                    "master"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ],
-            "jobs": [
-                "job_1",
-                "job_2",
-                "job_3",
-                "job_4",
-                "job_5",
-                "job_6",
-                "job_7",
-                "job_8",
-                "job_9"
-            ]
-        }
-    }
-}
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "echo Hello, World!"
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  say-hello-workflow:
+    jobs:
+      - say-hello
